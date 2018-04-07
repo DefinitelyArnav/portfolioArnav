@@ -11,13 +11,15 @@ tags:
   - shapefile
   - geojson
   - crime mapping
+
 ---
 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-The blog post covers plotting spatial points on a map in R. I will be covering the concepts of shapefiles, GeoJSON, Leaflets and sp objects and to how to read and manipulate them in R. At the end you would have created the following three interactive spatial maps
+This blog post covers plotting spatial points and visualising spatial data on a map and in R. We will be covering the concepts of shapefiles, GeoJSON, Leaflets and sp objects and to how to read and manipulate them in R. At the end you would have created the following three interactive spatial maps:
+
 1. Pinpoint/Marker maps
 ```{r echo=F,message=F, warning=F}
 
@@ -84,7 +86,9 @@ assam_choropleth<-assam_leaflet %>% addPolygons(
 assam_choropleth
 
 ```
-
+<br></br>
+<strong> Four steps to Spatial Data Visualisation</strong>
+<br></br>
 1. Read Shapefile or GeoJson as spatial or 'sp' objects in R
 2. Read the crime data and process it as necessary
 3. Convert the sp object into a Leaflet map widget
