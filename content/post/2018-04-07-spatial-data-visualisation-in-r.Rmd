@@ -1,0 +1,281 @@
+---
+title: Spatial Data Visualisation in R
+author: 'Arnav '
+date: '2018-04-07'
+slug: spatial-data-visualisation-in-r
+categories:
+  - R
+tags:
+  - spatial data analysis
+  - leaflet
+  - shapefile
+  - geojson
+  - crime mapping
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+The blog post covers plotting spatial points on a map in R. I will be covering the concepts of shapefiles, GeoJSON, Leaflets and sp objects and to how to read and manipulate them in R. At the end you would have created the following three interactive spatial maps
+1. Pinpoint/Marker maps
+```{r echo=F,message=F, warning=F}
+
+library(dplyr)# as_tibble
+library(leaflet)
+library(leaflet.extras) #For heatmaps
+library(rgdal)#readOGR
+library(raster)#shapefile
+library(mapview)
+library(knitr)
+library(RWordPress)
+library(here)
+crimeData<-read.csv("assamcrimedata.csv")
+crimeDemo<-crimeData[1:10,]
+
+# Reading GeoJson
+assam_map <- geojsonio::geojson_read("2011_Dist.json",what = "sp") 
+
+assam_leaflet<-leaflet(assam_map) %>% addPolygons(color="#444444",weight=1) 
+aM<-assam_leaflet %>% addMarkers(data = crimeDemo,~lng, ~lat,popup=popupTable(crimeDemo))
+
+aM
+```
+
+2. Heat maps
+```{r echo=F,message=F, warning=F}
+library(leaflet.extras) # required for addHeatmap function
+assamHeatmap<-assam_leaflet %>%
+        addHeatmap(data= crimeDemo,lng=~lng, lat=~lat,
+                   blur = 20, max = 0.05, radius = 15 ) 
+      
+assamHeatmap
+```
+
+3. Choropleth maps
+
+```{r echo=F,message=F, warning=F}
+districtCrimeCount<-count(crimeData,vars=crimedistricts)
+bins <- c(0,3,6,9, 12, 15, 18, 21, 24,27,30,Inf)
+
+pal <- colorBin("YlOrRd", domain = districtCrimeCount$freq, bins = bins)
+
+
+labels <- sprintf(
+  "<strong>%s</strong><br/>%g Crimes ",
+  districtCrimeCount$vars, districtCrimeCount$n
+) %>% lapply(htmltools::HTML)
+
+assam_choropleth<-assam_leaflet %>% addPolygons(
+  fillColor = ~pal(districtCrimeCount$n),
+  weight = 2,
+  opacity = 1,
+  dashArray = "3",
+  color = "white",
+  fillOpacity = 0.7,
+  highlight = highlightOptions(
+    weight = 5,
+    color = "#666",
+    bringToFront = TRUE),
+  label = labels) %>% 
+  addLegend(pal = pal, values = ~n, opacity = 0.7, title = NULL,
+            position = "bottomright")
+
+assam_choropleth
+
+```
+
+1. Read Shapefile or GeoJson as spatial or 'sp' objects in R
+2. Read the crime data and process it as necessary
+3. Convert the sp object into a Leaflet map widget
+4. Mapping Spatial Data onto the map widget
+
+<strong> </strong>
+<h3>Step 1: Reading Shapefile/GeoJson data as 'sp' objects</h3>
+First let's take a look at what shapefiles or GeoJson files and 'sp' objects actually are.
+
+<strong>Shapefile and GeoJson</strong>
+Shapefile and GeoJson are file types storing the spatial data and associated geographical features. You can imagine them to be a dataframe with data stored as information of spatial distribution of points, lines and polygons lying in the the geographical region which that shapefile/GeoJson describes. <strong>Points</strong> in a Shapefile/GeoJson can represent points or <strong>geo-cordinates</strong> on a map, <strong>lines</strong> can represent <strong>rivers, roads</strong> etc and <strong>polygons</strong> can correspond to <strong>enclosed</strong> <strong>blocks of areas</strong> on a map.
+For example:
+
+<img class=" size-full wp-image-40 aligncenter" src="https://theoutlieranalysis.files.wordpress.com/2018/04/screen-shot-2018-04-06-at-10-32-58-pm-e1523034459331.png" alt="Screen Shot 2018-04-06 at 10.32.58 PM" width="248" height="197" />
+
+Here, this shapefile has data stored in the form of spatial distribution of points ( indicating the wells), lines (denoting river) and polygon (denoting the lake here) in the region shown.
+
+We would need a shapefile/geojson which would ultimately be converted into an sp object to map our spatial points on. 
+<strong>Spatial ('sp') Objects
+sp </strong>is a package in R that provides classes and methods for dealing with spatial data. As discussed above, in spatial analysis, we crudely deal with the study of distribution of <em>points, lines and polygons </em>over a specific geographical region. 'sp' package can be considered to provide a class or a data type for storing such data. Thus an sp object is nothing but a variable of sp class.
+
+<strong>Reading Shapefile/GeoJson into R and converting them into 'sp' or spatial object</strong>
+We would need Sh
+There are three easy ways to do this in R:
+  1. Reading GeoJson as sp object using 'geojsonio' from leaflet package
+  2. Reading Shapefile as sp object using 'shapefile' fucntion from raster package
+  3. Reading shapefile as sp object using 'readOGR' function from rgdal package.
+
+Let's load the required libraries first.
+
+```{r loadingLibraries, message=FALSE, warning=FALSE}
+
+library(rgdal)#   1required for readOGR fucntion
+library(raster)# 2required for shapefile function
+library(leaflet)   # 3 reading geojson
+
+#library(dplyr)     # required for as_tibble function
+library(leaflet.extras) # required for generating heatmaps
+
+```
+
+The link for the required shapefiles/geojson is LINK
+
+```{r reading shapefile/geojson, include=F,message=F,warning=FALSE}
+
+# Reading GeoJson
+assam_map<- geojsonio::geojson_read("2011_Dist.json",what = "sp") 
+
+# Reading Shapefile using shapefile fucntion from raster pckg
+assam_map1 <-shapefile("assam.shp")
+# Reading Shapefile using readOGR function from rgdal pcks
+assam_map2 <- readOGR(".", "assam")
+```
+
+All the three maps read above would be of class 'sp'. Let's verify it once.
+
+
+```{r class sp}
+
+# Class types of all the three maps is 'sp'
+class(assam_map)
+class(assam_map1)
+class(assam_map2)
+
+```
+
+Also notice that all these three objects are SpatialPolygonDataFrame. That's because these maps contain information on distribution on polygons, which denote districts in Assam in our demo.
+We will use 'assam_map' for our demo, though, any of the three would work fine.
+Let's explore this 'sp' object assam_map further
+
+```{r plot assam_map, message=FALSE,warning=FALSE}
+
+library(ggplot2)
+plot(assam_map)
+library(dplyr) # For as_tibble function
+as_tibble(assam_map)
+
+```
+
+
+<strong> </strong>
+<h3>Step 2: Loading the spatial data</h3>
+The data I would be using for this demo is synthetic. It's the same data I had used for the <em> Satark Analytics Web App</em>. You can find the csv file here LINKKKKK
+```{r loading crime data, message=F, warning =F}
+
+#Load in your crime data
+crimeData<-read.csv("assamcrimedata.csv")
+crimeDemo<-crimeData[1:10,]
+#Get an ovrview of crimeDemo
+as_tibble(crimeDemo)
+
+```
+
+<h3>Step 3: Converting the 'sp' object generated above into a Leaflet Map Widget</h3>
+
+<strong>Leaflet</strong> is a JavaScript library to create interactive maps. Find more details here <a href="https://rstudio.github.io/leaflet/map_widget.html" target="_blank" rel="noopener">Leaflet for R</a>.
+
+The 'leaflet()' function generates a map widget, which stores a list of objects. It mostly takes a map as an input, but can also take data frames or matrices having latitude and longitude as inputs. 
+
+For our purpose we would be giving a SpatialPolygonDataFrame (assam_map) as input. The map widget generated then could be considered as the final map which is ready to be plotted.
+
+```{r assam_leaflet.0}
+
+assam_leaflet<-leaflet(assam_map) %>% addPolygons()
+assam_leaflet
+```
+This is the Assam leaflet we obtain. Let's make it a little better looking.
+```{r assam_leaflet.1}
+assam_leaflet<-leaflet(assam_map) %>% addPolygons(color="#444444",weight=1) 
+
+assam_leaflet
+
+```
+Thus our leaflet is ready to be mapped upon. It's time to move onto the last step.
+
+<h3>Step 4: Mapping Spatial Data onto the map widget</h3>
+<strong> Pinpoint or Marker plotting</strong>
+We will be marking up the crime points from our crimeDemo dataset onto the leaflet we have generated in the last step. We will be using the addMarkers function for the same.
+```{r addMarker}
+assamMarker<-assam_leaflet %>% 
+      addMarkers(data = crimeDemo,~lng, ~lat)
+assamMarker
+```
+
+Let's further add the functionality of generating a popup table when these markers are being clicked.
+
+```{r popuup, message=FALSE,warning=FALSE}
+library(mapview) # for generating popupTable
+assamMarker<-assam_leaflet %>% 
+      addMarkers(data = crimeDemo,~lng, ~lat,popup= popupTable(crimeDemo))
+assamMarker
+```
+
+<strong> Heatmap </strong>
+
+```{r heatmap, message=F, warning =F}
+library(leaflet.extras) # required for addHeatmap function
+assamHeatmap<-assam_leaflet %>%
+        addHeatmap(data= crimeDemo,lng=~lng, lat=~lat,
+                   blur = 20, max = 0.05, radius = 15 ) 
+      
+assamHeatmap
+```
+
+<strong> Choropleth </strong>
+
+Generating chorpleth can be tricky. I would strongly urge you to checkout the documentation page for <strong>leaflet choropleth</strong>
+
+Firstly, we need to process the crimeData (we won't be using crimeDemo here because it contains to few a points for proper demonstration of a chorpleth). We need to build a count table which contains the district and the count of crimes taking place against every district. This can be easily done using the 'count()' function in R.
+
+```{r message=F, warning=F}
+districtCrimeCount<-count(crimeData,vars=crimedistricts)
+head(districtCrimeCount)
+```
+
+Next, we generate three utility containers as foloows:
+<strong> bins :</strong> will help us to generate the color palette. Each bin interval will be assigned a different color in the palette.
+<strong> pal :</strong> to decide the color-coding scheme with respect to the number of crimes 
+<strong> labels :</strong> to generate the interactive labels that appear on hovering over the map
+```{r message=F, warning=F}
+bins <- c(0,3,6,9, 12, 15, 18, 21, 24,27,30,Inf)
+
+pal <- colorBin("YlOrRd", domain = districtCrimeCount$n, bins = bins)
+
+labels <- sprintf(
+        "<strong>%s</strong><br/>%g Crimes ",
+        districtCrimeCount$vars, districtCrimeCount$n
+      ) %>% lapply(htmltools::HTML)
+```
+
+Next, we generate the choropleth by manipulating the addPolygons() function as follows
+
+```{r message=F, warning=F}
+assam_choropleth<-assam_leaflet %>% addPolygons(
+  fillColor = ~pal(districtCrimeCount$n),
+  weight = 2,
+  opacity = 1,
+  dashArray = "3",
+  color = "white",
+  fillOpacity = 0.7,
+  highlight = highlightOptions(
+    weight = 5,
+    color = "#666",
+    bringToFront = TRUE),
+  label = labels) %>% 
+  addLegend(pal = pal, values = ~n, opacity = 0.7, title = NULL,
+            position = "bottomright")
+
+assam_choropleth
+```
+
+
+
+

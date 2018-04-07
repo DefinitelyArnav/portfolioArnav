@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>Crime mapping</title>
+      <link>/tags/crime-mapping/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/crime-mapping/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Deep-learning</title>
       <link>/tags/deep-learning/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
@@ -36,6 +45,24 @@
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/tags/demo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Geojson</title>
+      <link>/tags/geojson/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/geojson/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Leaflet</title>
+      <link>/tags/leaflet/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/leaflet/</guid>
       <description></description>
     </item>
     
@@ -63,6 +90,24 @@
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
       <guid>/tags/regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shapefile</title>
+      <link>/tags/shapefile/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/shapefile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spatial data analysis</title>
+      <link>/tags/spatial-data-analysis/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/spatial-data-analysis/</guid>
       <description></description>
     </item>
     

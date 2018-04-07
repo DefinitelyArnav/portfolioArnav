@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.38.1" />
+  <meta name="author" content="Arnav Saxena">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="knitr::opts_chunk$set(echo = TRUE)  The blog post covers plotting spatial points on a map in R. I will be covering the concepts of shapefiles, GeoJSON, Leaflets and sp objects and to how to read and manipulate them in R. At the end you would have created the following three interactive spatial maps 1. Pinpoint/Marker maps
+library(dplyr)# as_tibble library(leaflet) library(leaflet.extras) #For heatmaps library(rgdal)#readOGR library(raster)#shapefile library(mapview) library(knitr) library(RWordPress) library(widgetframe) library(htmlwidgets) crimeData&lt;-read.csv(&quot;assamcrimedata.csv&quot;) crimeDemo&lt;-crimeData[1:10,] # Reading GeoJson assam_map &lt;- geojsonio::geojson_read(&quot;2011_Dist.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/a-first-post-using-blogdown/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Arnav Saxena">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Arnav Saxena">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/a-first-post-using-blogdown/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Arnav Saxena">
+  <meta property="og:url" content="/post/a-first-post-using-blogdown/">
+  <meta property="og:title" content="A first post using blogdown | Arnav Saxena">
+  <meta property="og:description" content="knitr::opts_chunk$set(echo = TRUE)  The blog post covers plotting spatial points on a map in R. I will be covering the concepts of shapefiles, GeoJSON, Leaflets and sp objects and to how to read and manipulate them in R. At the end you would have created the following three interactive spatial maps 1. Pinpoint/Marker maps
+library(dplyr)# as_tibble library(leaflet) library(leaflet.extras) #For heatmaps library(rgdal)#readOGR library(raster)#shapefile library(mapview) library(knitr) library(RWordPress) library(widgetframe) library(htmlwidgets) crimeData&lt;-read.csv(&quot;assamcrimedata.csv&quot;) crimeDemo&lt;-crimeData[1:10,] # Reading GeoJson assam_map &lt;- geojsonio::geojson_read(&quot;2011_Dist.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-04-07T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-04-07T00:00:00&#43;00:00">
+  
+
+  
+
+  <title>A first post using blogdown | Arnav Saxena</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">Arnav Saxena</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="https://drive.google.com/open?id=0Bz0iy7k5gik0Y0VjVzUyRXVNalk" target="_blank" rel="noopener">
+            
+            <span>Resume</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">A first post using blogdown</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-04-07 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Apr 7, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Arnav Saxena">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=A%20first%20post%20using%20blogdown&amp;url=%2fpost%2fa-first-post-using-blogdown%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fa-first-post-using-blogdown%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fa-first-post-using-blogdown%2f&amp;title=A%20first%20post%20using%20blogdown"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fa-first-post-using-blogdown%2f&amp;title=A%20first%20post%20using%20blogdown"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=A%20first%20post%20using%20blogdown&amp;body=%2fpost%2fa-first-post-using-blogdown%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <pre><code class="language-r setup, include=FALSE">knitr::opts_chunk$set(echo = TRUE)
+</code></pre>
+
+<p>The blog post covers plotting spatial points on a map in R. I will be covering the concepts of shapefiles, GeoJSON, Leaflets and sp objects and to how to read and manipulate them in R. At the end you would have created the following three interactive spatial maps
+1. Pinpoint/Marker maps</p>
+
+<pre><code class="language-r echo=F,message=F, warning=F">
+library(dplyr)# as_tibble
+library(leaflet)
+library(leaflet.extras) #For heatmaps
+library(rgdal)#readOGR
+library(raster)#shapefile
+library(mapview)
+library(knitr)
+library(RWordPress)
+library(widgetframe)
+library(htmlwidgets)
+crimeData&lt;-read.csv(&quot;assamcrimedata.csv&quot;)
+crimeDemo&lt;-crimeData[1:10,]
+
+# Reading GeoJson
+assam_map &lt;- geojsonio::geojson_read(&quot;2011_Dist.json&quot;,
+                                 what = &quot;sp&quot;) 
+assam_leaflet&lt;-leaflet(assam_map) %&gt;% addPolygons(color=&quot;#444444&quot;,weight=1) 
+aM&lt;-assam_leaflet %&gt;% addMarkers(data = crimeDemo,~lng, ~lat,popup= popupTable(crimeDemo))
+aM
+</code></pre>
+
+<ol>
+<li>Heat maps
+```{r echo=F,message=F, warning=F}
+library(leaflet.extras) # required for addHeatmap function
+assamHeatmap&lt;-assam_leaflet %&gt;%
+    addHeatmap(data= crimeDemo,lng=~lng, lat=~lat,
+               blur = 20, max = 0.05, radius = 15 )
+<br /></li>
+</ol>
+
+<p>assamHeatmap</p>
+
+<pre><code>
+3. Choropleth maps
+
+```{r echo=F,message=F, warning=F}
+districtCrimeCount&lt;-count(crimeData,vars=crimedistricts)
+bins &lt;- c(0,3,6,9, 12, 15, 18, 21, 24,27,30,Inf)
+
+pal &lt;- colorBin(&quot;YlOrRd&quot;, domain = districtCrimeCount$freq, bins = bins)
+
+
+labels &lt;- sprintf(
+  &quot;&lt;strong&gt;%s&lt;/strong&gt;&lt;br/&gt;%g Crimes &quot;,
+  districtCrimeCount$vars, districtCrimeCount$n
+) %&gt;% lapply(htmltools::HTML)
+
+assam_choropleth&lt;-assam_leaflet %&gt;% addPolygons(
+  fillColor = ~pal(districtCrimeCount$n),
+  weight = 2,
+  opacity = 1,
+  dashArray = &quot;3&quot;,
+  color = &quot;white&quot;,
+  fillOpacity = 0.7,
+  highlight = highlightOptions(
+    weight = 5,
+    color = &quot;#666&quot;,
+    bringToFront = TRUE),
+  label = labels) %&gt;% 
+  addLegend(pal = pal, values = ~n, opacity = 0.7, title = NULL,
+            position = &quot;bottomright&quot;)
+
+assam_choropleth
+
+</code></pre>
+
+<ol>
+<li>Read Shapefile or GeoJson as spatial or &lsquo;sp&rsquo; objects in R</li>
+<li>Read the crime data and process it as necessary</li>
+<li>Convert the sp object into a Leaflet map widget</li>
+<li>Mapping Spatial Data onto the map widget</li>
+</ol>
+
+<p><strong> </strong>
+<h3>Step 1: Reading Shapefile/GeoJson data as &lsquo;sp&rsquo; objects</h3>
+First let&rsquo;s take a look at what shapefiles or GeoJson files and &lsquo;sp&rsquo; objects actually are.</p>
+
+<p><strong>Shapefile and GeoJson</strong>
+Shapefile and GeoJson are file types storing the spatial data and associated geographical features. You can imagine them to be a dataframe with data stored as information of spatial distribution of points, lines and polygons lying in the the geographical region which that shapefile/GeoJson describes. <strong>Points</strong> in a Shapefile/GeoJson can represent points or <strong>geo-cordinates</strong> on a map, <strong>lines</strong> can represent <strong>rivers, roads</strong> etc and <strong>polygons</strong> can correspond to <strong>enclosed</strong> <strong>blocks of areas</strong> on a map.
+For example:</p>
+
+<p><img class=" size-full wp-image-40 aligncenter" src="https://theoutlieranalysis.files.wordpress.com/2018/04/screen-shot-2018-04-06-at-10-32-58-pm-e1523034459331.png" alt="Screen Shot 2018-04-06 at 10.32.58 PM" width="248" height="197" /></p>
+
+<p>Here, this shapefile has data stored in the form of spatial distribution of points ( indicating the wells), lines (denoting river) and polygon (denoting the lake here) in the region shown.</p>
+
+<p>We would need a shapefile/geojson which would ultimately be converted into an sp object to map our spatial points on.
+<strong>Spatial (&lsquo;sp&rsquo;) Objects
+sp </strong>is a package in R that provides classes and methods for dealing with spatial data. As discussed above, in spatial analysis, we crudely deal with the study of distribution of <em>points, lines and polygons </em>over a specific geographical region. &lsquo;sp&rsquo; package can be considered to provide a class or a data type for storing such data. Thus an sp object is nothing but a variable of sp class.</p>
+
+<p><strong>Reading Shapefile/GeoJson into R and converting them into &lsquo;sp&rsquo; or spatial object</strong>
+We would need Sh
+There are three easy ways to do this in R:
+  1. Reading GeoJson as sp object using &lsquo;geojsonio&rsquo; from leaflet package
+  2. Reading Shapefile as sp object using &lsquo;shapefile&rsquo; fucntion from raster package
+  3. Reading shapefile as sp object using &lsquo;readOGR&rsquo; function from rgdal package.</p>
+
+<p>Let&rsquo;s load the required libraries first.</p>
+
+<pre><code class="language-r loadingLibraries, message=FALSE, warning=FALSE">
+library(rgdal)#   1required for readOGR fucntion
+library(raster)# 2required for shapefile function
+library(leaflet)   # 3 reading geojson
+
+#library(dplyr)     # required for as_tibble function
+library(leaflet.extras) # required for generating heatmaps
+
+</code></pre>
+
+<p>The link for the required shapefiles/geojson is LINK</p>
+
+<pre><code class="language-r reading shapefile/geojson, message=F,warning=FALSE">
+# Reading GeoJson
+assam_map &lt;- geojsonio::geojson_read(&quot;2011_Dist.json&quot;,what = &quot;sp&quot;) 
+# Reading Shapefile using shapefile fucntion from raster pckg
+assam_map1 &lt;-shapefile(&quot;assam.shp&quot;) 
+# Reading Shapefile using readOGR function from rgdal pcks
+assam_map2 &lt;- readOGR(&quot;.&quot;, &quot;assam&quot;)
+</code></pre>
+
+<p>All the three maps read above would be of class &lsquo;sp&rsquo;. Let&rsquo;s verify it once.</p>
+
+<pre><code class="language-r class sp">
+# Class types of all the three maps is 'sp'
+class(assam_map)
+class(assam_map1)
+class(assam_map2)
+
+</code></pre>
+
+<p>Also notice that all these three objects are SpatialPolygonDataFrame. That&rsquo;s because these maps contain information on distribution on polygons, which denote districts in Assam in our demo.
+We will use &lsquo;assam_map&rsquo; for our demo, though, any of the three would work fine.
+Let&rsquo;s explore this &lsquo;sp&rsquo; object assam_map further</p>
+
+<pre><code class="language-r plot assam_map, message=FALSE,warning=FALSE">
+library(ggplot2)
+plot(assam_map)
+library(dplyr) # For as_tibble function
+as_tibble(assam_map)
+
+</code></pre>
+
+<p><strong> </strong>
+<h3>Step 2: Loading the spatial data</h3>
+The data I would be using for this demo is synthetic. It&rsquo;s the same data I had used for the <em> Satark Analytics Web App</em>. You can find the csv file here LINKKKKK</p>
+
+<pre><code class="language-r loading crime data, message=F, warning =F">
+#Load in your crime data
+crimeData&lt;-read.csv(&quot;assamcrimedata.csv&quot;)
+crimeDemo&lt;-crimeData[1:10,]
+#Get an ovrview of crimeDemo
+as_tibble(crimeDemo)
+
+</code></pre>
+
+<h3>Step 3: Converting the 'sp' object generated above into a Leaflet Map Widget</h3>
+
+<p><strong>Leaflet</strong> is a JavaScript library to create interactive maps. Find more details here <a href="https://rstudio.github.io/leaflet/map_widget.html" target="_blank" rel="noopener">Leaflet for R</a>.</p>
+
+<p>The &lsquo;leaflet()&rsquo; function generates a map widget, which stores a list of objects. It mostly takes a map as an input, but can also take data frames or matrices having latitude and longitude as inputs.</p>
+
+<p>For our purpose we would be giving a SpatialPolygonDataFrame (assam_map) as input. The map widget generated then could be considered as the final map which is ready to be plotted.</p>
+
+<pre><code class="language-r assam_leaflet.0">library(widgetframe)
+assam_leaflet&lt;-leaflet(assam_map) %&gt;% addPolygons()
+assam_leaflet
+</code></pre>
+
+<p>This is the Assam leaflet we obtain. Let&rsquo;s make it a little better looking.</p>
+
+<pre><code class="language-r assam_leaflet.1">assam_leaflet&lt;-leaflet(assam_map) %&gt;% addPolygons(color=&quot;#444444&quot;,weight=1) 
+
+assam_leaflet
+
+</code></pre>
+
+<p>Thus our leaflet is ready to be mapped upon. It&rsquo;s time to move onto the last step.</p>
+
+<p><h3>Step 4: Mapping Spatial Data onto the map widget</h3>
+<strong> Pinpoint or Marker plotting</strong>
+We will be marking up the crime points from our crimeDemo dataset onto the leaflet we have generated in the last step. We will be using the addMarkers function for the same.</p>
+
+<pre><code class="language-r addMarker">assamMarker&lt;-assam_leaflet %&gt;% 
+      addMarkers(data = crimeDemo,~lng, ~lat)
+assamMarker
+</code></pre>
+
+<p>Let&rsquo;s further add the functionality of generating a popup table when these markers are being clicked.</p>
+
+<pre><code class="language-r popuup, message=FALSE,warning=FALSE">library(mapview) # for generating popupTable
+assamMarker&lt;-assam_leaflet %&gt;% 
+      addMarkers(data = crimeDemo,~lng, ~lat,popup= popupTable(crimeDemo))
+assamMarker
+</code></pre>
+
+<p><strong> Heatmap </strong></p>
+
+<pre><code class="language-r heatmap, message=F, warning =F">library(leaflet.extras) # required for addHeatmap function
+assamHeatmap&lt;-assam_leaflet %&gt;%
+        addHeatmap(data= crimeDemo,lng=~lng, lat=~lat,
+                   blur = 20, max = 0.05, radius = 15 ) 
+      
+assamHeatmap
+</code></pre>
+
+<p><strong> Choropleth </strong></p>
+
+<p>Generating chorpleth can be tricky. I would strongly urge you to checkout the documentation page for <strong>leaflet choropleth</strong></p>
+
+<p>Firstly, we need to process the crimeData (we won&rsquo;t be using crimeDemo here because it contains to few a points for proper demonstration of a chorpleth). We need to build a count table which contains the district and the count of crimes taking place against every district. This can be easily done using the &lsquo;count()&rsquo; function in R.</p>
+
+<pre><code class="language-r message=F, warning=F">districtCrimeCount&lt;-count(crimeData,vars=crimedistricts)
+head(districtCrimeCount)
+</code></pre>
+
+<p>Next, we generate three utility containers as foloows:
+<strong> bins :</strong> will help us to generate the color palette. Each bin interval will be assigned a different color in the palette.
+<strong> pal :</strong> to decide the color-coding scheme with respect to the number of crimes
+<strong> labels :</strong> to generate the interactive labels that appear on hovering over the map</p>
+
+<pre><code class="language-r message=F, warning=F">bins &lt;- c(0,3,6,9, 12, 15, 18, 21, 24,27,30,Inf)
+
+pal &lt;- colorBin(&quot;YlOrRd&quot;, domain = districtCrimeCount$n, bins = bins)
+
+labels &lt;- sprintf(
+        &quot;&lt;strong&gt;%s&lt;/strong&gt;&lt;br/&gt;%g Crimes &quot;,
+        districtCrimeCount$vars, districtCrimeCount$n
+      ) %&gt;% lapply(htmltools::HTML)
+</code></pre>
+
+<p>Next, we generate the choropleth by manipulating the addPolygons() function as follows</p>
+
+<pre><code class="language-r message=F, warning=F">assam_choropleth&lt;-assam_leaflet %&gt;% addPolygons(
+  fillColor = ~pal(districtCrimeCount$n),
+  weight = 2,
+  opacity = 1,
+  dashArray = &quot;3&quot;,
+  color = &quot;white&quot;,
+  fillOpacity = 0.7,
+  highlight = highlightOptions(
+    weight = 5,
+    color = &quot;#666&quot;,
+    bringToFront = TRUE),
+  label = labels) %&gt;% 
+  addLegend(pal = pal, values = ~n, opacity = 0.7, title = NULL,
+            position = &quot;bottomright&quot;)
+
+assam_choropleth
+</code></pre>
+
+    </div>
+
+    
+
+
+
+
+
+    
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+
+  </body>
+</html>
+
