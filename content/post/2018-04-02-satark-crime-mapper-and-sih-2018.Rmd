@@ -1,0 +1,44 @@
+---
+title: Satark Crime Mapper and SIH 2018
+author: Arnav
+date: '2018-04-02'
+slug: satark-crime-mapper-and-sih-2018
+categories:
+  - R
+  - Events & Competitions
+tags:
+  - Smart India Hackathon
+  - spatial data analysis
+  - crime mapping
+  - Shiny App
+  - R
+summary: "Throwback @ Smart India Hackathon 2018"  
+header:
+  image: "headers/scm&sih18.png"
+---
+<i>(</i><b><i>Disclaimer</i></b><i>: The data used for this application is </i><b><i>synthetic</i></b><i>. I've used London city's data and modified it by randomly attaching districts, geolocation, victim_age etc. The crime records reported in the application are in no way related to Assam.</i>)
+
+During the Smart India Hackathon 2018, I got a chance to make an interactive <i>'Crime Mapper and Spatial data analytics tool'</i>. My team, <i>Six Sigma,</i> named it <b>'SATARK'.</b>
+
+The code is entirely written in <b>R</b> and I've used R's <b><i>'Shiny'</i></b> package to build it into an interactive app. For those who don't know, building interactive apps in R with Shiny is really easy. Shiny package takes care of the front end and back end part on it's own and thus you can focus entirely on building the analytics engine for your application. Further you can deploy and share you application for free using <i>shinyapps.io</i>.
+
+I would be basing my first few tutorials upon the learnings I gathered during this amazing hackathon finale, which I was really fortunate to experience. Till then feel free to play around with <i>'Satark'</i>.
+Oh and the app is mobile responsive too!
+
+Here's the link for the same:
+<a href="https://definitelyarnav.shinyapps.io/satark/" target="_blank" rel="noopener">Satark Crime Analysis</a>
+
+For those who would like to venture into the code on their own, here it is.
+<a href="https://github.com/DefinitelyArnav/Satark.git">Satark@definitelyArnav.Git</a>
+
+Leaving you all with a few glimpses from the Hackathon.
+
+<img class="alignnone size-full wp-image-31" src="https://theoutlieranalysis.files.wordpress.com/2018/04/img_20180331_013829.jpg" alt="IMG_20180331_013829.jpg" width="3840" height="2160">
+
+<img class="alignnone size-full wp-image-34" src="https://theoutlieranalysis.files.wordpress.com/2018/04/img_20180330_132122.jpg" alt="IMG_20180330_132122.jpg" width="2992" height="4000">
+
+[caption id="attachment_32" width="4000"]<img class="alignnone size-full wp-image-32" src="https://theoutlieranalysis.files.wordpress.com/2018/04/img_20180330_201336.jpg" alt="IMG_20180330_201336.jpg" width="4000" height="3000"> PM Modi in the house
+
+[caption id="attachment_33" width="2592"]<img class="alignnone size-full wp-image-33" src="https://theoutlieranalysis.files.wordpress.com/2018/04/img_20180329_0648512.jpg" alt="IMG_20180329_064851~2.jpg" width="2592" height="1944"> Team Six Sigma
+
+Till next time!

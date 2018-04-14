@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shiny App on Arnav Saxena</title>
+    <link>/tags/shiny-app/</link>
+    <description>Recent content in Shiny App on Arnav Saxena</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Mon, 02 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/shiny-app/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Satark Crime Mapper and SIH 2018</title>
+      <link>/post/satark-crime-mapper-and-sih-2018/</link>
+      <pubDate>Mon, 02 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/satark-crime-mapper-and-sih-2018/</guid>
+      <description>(Disclaimer: The data used for this application is synthetic. I’ve used London city’s data and modified it by randomly attaching districts, geolocation, victim_age etc. The crime records reported in the application are in no way related to Assam.)
+During the Smart India Hackathon 2018, I got a chance to make an interactive ‘Crime Mapper and Spatial data analytics tool’. My team, Six Sigma, named it ‘SATARK’.
+The code is entirely written in R and I’ve used R’s ‘Shiny’ package to build it into an interactive app.</description>
+    </item>
+    
+  </channel>
+</rss>

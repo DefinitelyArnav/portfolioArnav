@@ -12,13 +12,16 @@ tags:
   - geojson
   - crime mapping
 
+summary: "This tutorial covers the basics of spatial data mapping and visualisation from scratch."
+header:
+  image: "headers/spatial-data-mapping.png"
+  
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-This blog post covers plotting spatial points and visualising spatial data on a map and in R. We will be covering the concepts of shapefiles, GeoJSON, Leaflets and sp objects and to how to read and manipulate them in R. At the end you would have created the following three interactive spatial maps:
+This blog post covers plotting spatial points and visualising spatial data on in R. We will be covering the concepts of shapefiles, GeoJSON, Leaflets and sp objects and to how to read and manipulate them in R. At the end you would have created the following three interactive spatial maps:
 
 1. Pinpoint/Marker maps
 ```{r echo=F,message=F, warning=F}
@@ -90,8 +93,11 @@ assam_choropleth
 <strong> Four steps to Spatial Data Visualisation</strong>
 <br></br>
 1. Read Shapefile or GeoJson as spatial or 'sp' objects in R
+<br></br>
 2. Read the crime data and process it as necessary
+<br></br>
 3. Convert the sp object into a Leaflet map widget
+<br></br>
 4. Mapping Spatial Data onto the map widget
 
 <strong> </strong>
@@ -111,11 +117,14 @@ We would need a shapefile/geojson which would ultimately be converted into an sp
 sp </strong>is a package in R that provides classes and methods for dealing with spatial data. As discussed above, in spatial analysis, we crudely deal with the study of distribution of <em>points, lines and polygons </em>over a specific geographical region. 'sp' package can be considered to provide a class or a data type for storing such data. Thus an sp object is nothing but a variable of sp class.
 
 <strong>Reading Shapefile/GeoJson into R and converting them into 'sp' or spatial object</strong>
-We would need Sh
+
 There are three easy ways to do this in R:
-  1. Reading GeoJson as sp object using 'geojsonio' from leaflet package
-  2. Reading Shapefile as sp object using 'shapefile' fucntion from raster package
-  3. Reading shapefile as sp object using 'readOGR' function from rgdal package.
+<br></br>
+  1. Reading GeoJson as sp object using 'geojsonio' from leaflet package.
+  <br></br>
+  2. Reading Shapefile as sp object using 'shapefile' function from raster package.
+  <br></br>
+  3. Reading Shapefile as sp object using 'readOGR' function from rgdal package.
 
 Let's load the required libraries first.
 
@@ -125,18 +134,14 @@ library(rgdal)#   1required for readOGR fucntion
 library(raster)# 2required for shapefile function
 library(leaflet)   # 3 reading geojson
 
-#library(dplyr)     # required for as_tibble function
-library(leaflet.extras) # required for generating heatmaps
-
 ```
 
-The link for the required shapefiles/geojson is LINK
+The link for the required shapefiles/geojson is <a href= "https://github.com/DefinitelyArnav/Satark">(download assam.prj, assam.shp, assam.shx, assam.dbf)</a>
 
 ```{r reading shapefile/geojson, include=F,message=F,warning=FALSE}
 
 # Reading GeoJson
 assam_map<- geojsonio::geojson_read("2011_Dist.json",what = "sp") 
-
 # Reading Shapefile using shapefile fucntion from raster pckg
 assam_map1 <-shapefile("assam.shp")
 # Reading Shapefile using readOGR function from rgdal pcks
@@ -155,7 +160,7 @@ class(assam_map2)
 
 ```
 
-Also notice that all these three objects are SpatialPolygonDataFrame. That's because these maps contain information on distribution on polygons, which denote districts in Assam in our demo.
+Also notice that all these three objects are SpatialPolygonDataFrame. That's because these maps contain information on distribution on polygons, which denote districts in Assam in our demo. Thus they all are dataframe of polygons.
 We will use 'assam_map' for our demo, though, any of the three would work fine.
 Let's explore this 'sp' object assam_map further
 
@@ -171,7 +176,7 @@ as_tibble(assam_map)
 
 <strong> </strong>
 <h3>Step 2: Loading the spatial data</h3>
-The data I would be using for this demo is synthetic. It's the same data I had used for the <em> Satark Analytics Web App</em>. You can find the csv file here LINKKKKK
+The data I would be using for this demo is synthetic. It's the same data I had used for the <em> Satark Analytics Web App</em>. You can find the csv file here <a href= "https://github.com/DefinitelyArnav/Satark">(download assamcrimedata.csv)</a>
 ```{r loading crime data, message=F, warning =F}
 
 #Load in your crime data
@@ -237,16 +242,19 @@ assamHeatmap
 
 Generating chorpleth can be tricky. I would strongly urge you to checkout the documentation page for <strong>leaflet choropleth</strong>
 
-Firstly, we need to process the crimeData (we won't be using crimeDemo here because it contains to few a points for proper demonstration of a chorpleth). We need to build a count table which contains the district and the count of crimes taking place against every district. This can be easily done using the 'count()' function in R.
+Firstly, we need to process the crimeData (we won't be using crimeDemo here because it contains too few a points for proper demonstration of a chorpleth). Secondly, we need to build a count table which contains the district and the count of crimes taking place against every district. This can be easily done using the 'count()' function in R.
 
 ```{r message=F, warning=F}
 districtCrimeCount<-count(crimeData,vars=crimedistricts)
 head(districtCrimeCount)
 ```
 
-Next, we generate three utility containers as foloows:
+Next, we generate three utility containers as follows:
+<br></br>
 <strong> bins :</strong> will help us to generate the color palette. Each bin interval will be assigned a different color in the palette.
+<br></br>
 <strong> pal :</strong> to decide the color-coding scheme with respect to the number of crimes 
+<br></br>
 <strong> labels :</strong> to generate the interactive labels that appear on hovering over the map
 ```{r message=F, warning=F}
 bins <- c(0,3,6,9, 12, 15, 18, 21, 24,27,30,Inf)
@@ -281,5 +289,7 @@ assam_choropleth
 ```
 
 
-
+And that's it. Enjoy playing around with the visualisations you have generated. Leave down comments for any queries or suggestions. Reviews are always invited.
+<br></br>
+Till next time :)
 
