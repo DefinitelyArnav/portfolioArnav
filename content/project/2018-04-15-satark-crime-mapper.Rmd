@@ -1,0 +1,35 @@
+---
+title: Satark Crime Mapper
+author: Arnav
+date: '2018-04-15'
+slug: satark-crime-mapper
+categories:
+  - R
+  - Events & Competitions
+tags:
+  - R
+  - crime mapping
+  - Smart India Hackathon
+  - Shiny App
+  - spatial data analysis
+  
+header:
+  image: "headers/scm&sih18.png"
+---
+
+Satark is a digital crime recording and analytics web application built for performing real time spatial data analysis on crime data to help the police personnels identify crime hotspots and prevailing crime trends.
+The application was conceived as a solution to the problem statement of crime mapping offered by the Govt of Assam during the Smart India Hackathon '18.
+<br></br>
+It composed of three major components
+
+1. A database management system for recording geospatial crime data built using postgreSQL.
+2. A digital crime mapper and analytics tool to give the police officials a comprehensive overview of the crime trends prevailing in the geographical area under their jurisdiction, built using R and Shiny framework.
+3. 'Satark Nagrik App', a mobile application for crowdsourcing crime reports. The citizens could report crime incidents through this app which would be updated in real time on a geographical map.
+<br></br>
+The application could also be made available for general public so as to make them aware of the crime statistics prevailing in their neighbourhood
+
+<li>Link of the project:
+<a href="https://definitelyarnav.shinyapps.io/satark/">Satark Crime Mapper</a></li>
+<li>Github link for the code:
+<a href="https://github.com/DefinitelyArnav/Satark">Github@DefinitelyArnav/Satark</a>
+</li>

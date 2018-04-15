@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Mon, 02 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Satark Crime Mapper</title>
+      <link>/project/satark-crime-mapper/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/satark-crime-mapper/</guid>
+      <description>Satark is a digital crime recording and analytics web application built for performing real time spatial data analysis on crime data to help the police personnels identify crime hotspots and prevailing crime trends. The application was conceived as a solution to the problem statement of crime mapping offered by the Govt of Assam during the Smart India Hackathon ’18.  It composed of three major components
+A database management system for recording geospatial crime data built using postgreSQL.</description>
+    </item>
     
     <item>
       <title>Satark Crime Mapper and SIH 2018</title>

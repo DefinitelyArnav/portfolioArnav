@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Arnav Saxena</title>
+    <link>/categories/python/</link>
+    <description>Recent content in Python on Arnav Saxena</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sun, 15 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Game theoretic approach for Word Sense Disambiguation</title>
+      <link>/project/game-theoretic-approach-for-word-sense-disambiguation/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/game-theoretic-approach-for-word-sense-disambiguation/</guid>
+      <description>Implemented a novel word sense disambiguation model incorporating evolutionary game theory based on the 2016 Association for Computational Linguistics paper by Rocco Tripodi and Marcello Pelillo.
+ Gihub Link: Github@DefinitelyArnav/NLP  </description>
+    </item>
+    
+  </channel>
+</rss>

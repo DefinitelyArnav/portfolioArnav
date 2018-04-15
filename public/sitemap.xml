@@ -5,6 +5,24 @@
     
     <url>
     
+      <loc>/project/game-theoretic-approach-for-word-sense-disambiguation/</loc>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/project/satark-crime-mapper/</loc>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/spatial-data-visualisation-in-r/</loc>
       <lastmod>2018-04-07T00:00:00+00:00</lastmod>
     </url>
@@ -41,15 +59,6 @@
     
     <url>
     
-      <loc>/post/getting-started/</loc>
-      <lastmod>2018-01-13T00:00:00+05:30</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/</loc>
       <lastmod>2018-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -70,7 +79,7 @@
     <url>
     
       <loc>/tags/crime-mapping/</loc>
-      <lastmod>2018-04-07T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -80,7 +89,17 @@
     <url>
     
       <loc>/categories/events--competitions/</loc>
-      <lastmod>2018-04-02T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/evolutionary-game-theory/</loc>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -109,6 +128,36 @@
     
     <url>
     
+      <loc>/tags/nlp/</loc>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/natural-language-processing/</loc>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/project/</loc>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/publication_types/</loc>
       <priority>0</priority>
     </url>
@@ -118,8 +167,28 @@
     
     <url>
     
+      <loc>/tags/python/</loc>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/python/</loc>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/r/</loc>
-      <lastmod>2018-04-02T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -129,7 +198,7 @@
     <url>
     
       <loc>/categories/r/</loc>
-      <lastmod>2018-04-07T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -149,7 +218,7 @@
     <url>
     
       <loc>/tags/shiny-app/</loc>
-      <lastmod>2018-04-02T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -159,7 +228,7 @@
     <url>
     
       <loc>/tags/smart-india-hackathon/</loc>
-      <lastmod>2018-04-02T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -169,7 +238,7 @@
     <url>
     
       <loc>/tags/spatial-data-analysis/</loc>
-      <lastmod>2018-04-07T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -180,6 +249,16 @@
     
       <loc>/tags/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/word-sense-disambiguation/</loc>
+      <lastmod>2018-04-15T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

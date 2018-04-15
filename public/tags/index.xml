@@ -24,9 +24,18 @@
     <item>
       <title>Crime mapping</title>
       <link>/tags/crime-mapping/</link>
-      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/crime-mapping/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Evolutionary Game Theory</title>
+      <link>/tags/evolutionary-game-theory/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/evolutionary-game-theory/</guid>
       <description></description>
     </item>
     
@@ -49,9 +58,27 @@
     </item>
     
     <item>
+      <title>NLP</title>
+      <link>/tags/nlp/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>R</title>
       <link>/tags/r/</link>
-      <pubDate>Mon, 02 Apr 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
       <description></description>
@@ -69,7 +96,7 @@
     <item>
       <title>Shiny App</title>
       <link>/tags/shiny-app/</link>
-      <pubDate>Mon, 02 Apr 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/shiny-app/</guid>
       <description></description>
@@ -78,7 +105,7 @@
     <item>
       <title>Smart India Hackathon</title>
       <link>/tags/smart-india-hackathon/</link>
-      <pubDate>Mon, 02 Apr 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/smart-india-hackathon/</guid>
       <description></description>
@@ -87,9 +114,18 @@
     <item>
       <title>Spatial data analysis</title>
       <link>/tags/spatial-data-analysis/</link>
-      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/spatial-data-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Word sense disambiguation</title>
+      <link>/tags/word-sense-disambiguation/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/word-sense-disambiguation/</guid>
       <description></description>
     </item>
     

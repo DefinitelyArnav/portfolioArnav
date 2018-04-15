@@ -7,27 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Deep Learning</title>
-      <link>/project/deep-learning/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <title>Game theoretic approach for Word Sense Disambiguation</title>
+      <link>/project/game-theoretic-approach-for-word-sense-disambiguation/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/project/deep-learning/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus.</description>
+      <guid>/project/game-theoretic-approach-for-word-sense-disambiguation/</guid>
+      <description>Implemented a novel word sense disambiguation model incorporating evolutionary game theory based on the 2016 Association for Computational Linguistics paper by Rocco Tripodi and Marcello Pelillo.
+ Gihub Link: Github@DefinitelyArnav/NLP  </description>
     </item>
     
     <item>
-      <title>External Project</title>
-      <link>/project/example-external-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <title>Satark Crime Mapper</title>
+      <link>/project/satark-crime-mapper/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/project/example-external-project/</guid>
-      <description></description>
+      <guid>/project/satark-crime-mapper/</guid>
+      <description>Satark is a digital crime recording and analytics web application built for performing real time spatial data analysis on crime data to help the police personnels identify crime hotspots and prevailing crime trends. The application was conceived as a solution to the problem statement of crime mapping offered by the Govt of Assam during the Smart India Hackathon ’18.  It composed of three major components
+A database management system for recording geospatial crime data built using postgreSQL.</description>
     </item>
     
   </channel>

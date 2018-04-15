@@ -1,0 +1,23 @@
+---
+title: Game theoretic approach for Word Sense Disambiguation
+author: Arnav
+date: '2018-04-15'
+slug: game-theoretic-approach-for-word-sense-disambiguation
+categories:
+  - Python
+  - Natural Language Processing
+tags:
+  - Python
+  - NLP
+  - Evolutionary Game Theory
+  - word sense disambiguation
+header:
+  image: "headers/wsd.jpg"
+
+---
+
+Implemented a novel word sense disambiguation model incorporating evolutionary game theory based on the 2016 Association for Computational Linguistics paper by Rocco Tripodi and Marcello Pelillo. 
+
+<br></br>
+Gihub Link: <a href="https://github.com/DefinitelyArnav/nlp">Github@DefinitelyArnav/NLP</a></li>
+ 

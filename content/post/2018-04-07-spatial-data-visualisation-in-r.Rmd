@@ -291,5 +291,5 @@ assam_choropleth
 
 And that's it. Enjoy playing around with the visualisations you have generated. Leave down comments for any queries or suggestions. Reviews are always invited.
 <br></br>
-Till next time :)
+Till next time!
 

@@ -51,14 +51,14 @@ defaultContentLanguageInSubdir = false
 
   # Your details.
   name = "Arnav Saxena"
-  role = "Student | Data Scientist"
+  role = "Student | Data Enthusiast"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
   organizations = [ { name = "Delhi Technological University", url = "" } ]
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
-  avatar = "portrait7.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
+  avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "arnavsaxenadtu@gmail.com"
   address = "New Delhi, India"
   office_hours = ""

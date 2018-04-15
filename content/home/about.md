@@ -19,7 +19,7 @@ weight = 5
 [[education.courses]]
   course = "B.tech, Mathematics And Computing "
   institution = "Delhi Technological University"
-  year = 2020
+  year = 2019
 
 #[[education.courses, copy above para to add new edu]]
  
@@ -27,4 +27,6 @@ weight = 5
 +++
 
 # Biography
-Yet another data freak!
+Hi says this data freak!<br></br>
+In my freshmen year, I developed this fascination for data and it's ability to hide amazing stories within itself. My engineering coursework further aligned with this interest of mine and thus began my tryst with data and data sciences.<br></br>
+Being proficient with R and Python, I've been able to showcase my skills by working on various data science related projects and contests. Also, I would be joining Deloitte USI as a Data Science Intern this summer. 
