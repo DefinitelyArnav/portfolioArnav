@@ -29,4 +29,4 @@ weight = 5
 # Biography
 Hi says this data freak!<br></br>
 In my freshmen year, I developed this fascination for data and it's ability to hide amazing stories within itself. My engineering coursework further aligned with this interest of mine and thus began my tryst with data and data sciences.<br></br>
-Being proficient with R and Python, I've been able to showcase my skills by working on various data science related projects and contests. Also, I would be joining Deloitte USI as a Data Science Intern this summer. 
+Being proficient with R and Python, I've been able to showcase my skills by working on various data science related projects and contests. I would be joining Deloitte USI as a Data Science Intern this summer. 
