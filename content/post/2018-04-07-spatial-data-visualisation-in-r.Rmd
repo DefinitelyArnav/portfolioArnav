@@ -21,7 +21,7 @@ header:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-This blog post covers plotting spatial points and visualising spatial data on in R. We will be covering the concepts of shapefiles, GeoJSON, Leaflets and sp objects and to how to read and manipulate them in R. At the end you would have created the following three interactive spatial maps:
+In this tutorial, we will be covering the concepts of shapefiles, GeoJSON, Leaflets and sp objects and to how to read and manipulate them in R. At the end you would have created the following three interactive spatial maps:
 
 1. Pinpoint/Marker maps
 ```{r echo=F,message=F, warning=F}
@@ -92,17 +92,18 @@ assam_choropleth
 <br></br>
 <strong> Four steps to Spatial Data Visualisation</strong>
 <br></br>
-1. Read Shapefile or GeoJson as spatial or 'sp' objects in R
+1. Read Shapefile or GeoJson as spatial or 'sp' object in R
 <br></br>
 2. Read the crime data and process it as necessary
 <br></br>
 3. Convert the sp object into a Leaflet map widget
 <br></br>
 4. Mapping Spatial Data onto the map widget
-
+<br></br>
+Don't worry, it won't sound this intimidating by the end.
 <strong> </strong>
 <h3>Step 1: Reading Shapefile/GeoJson data as 'sp' objects</h3>
-First let's take a look at what shapefiles or GeoJson files and 'sp' objects actually are.
+First let's take a look at what shapefiles,GeoJson files and 'sp' objects actually are.
 
 <strong>Shapefile and GeoJson</strong>
 Shapefile and GeoJson are file types storing the spatial data and associated geographical features. You can imagine them to be a dataframe with data stored as information of spatial distribution of points, lines and polygons lying in the the geographical region which that shapefile/GeoJson describes. <strong>Points</strong> in a Shapefile/GeoJson can represent points or <strong>geo-cordinates</strong> on a map, <strong>lines</strong> can represent <strong>rivers, roads</strong> etc and <strong>polygons</strong> can correspond to <strong>enclosed</strong> <strong>blocks of areas</strong> on a map.
